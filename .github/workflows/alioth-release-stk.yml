@@ -15,14 +15,6 @@ on:
         description: 'Kernel Tree Branch 1'
         default: 'next-main'
         required: true
-      KERNEL_TREE_BRANCH_2:
-        description: 'Kernel Tree Branch 2'
-        default: 'next-susfs'
-        required: true
-      KERNEL_TREE_BRANCH_3:
-        description: 'Kernel Tree Branch 3'
-        default: 'no-ksu'
-        required: true
       CODENAME:
         description: 'Phone Codename'
         default: 'alioth'
@@ -62,8 +54,6 @@ jobs:
           echo "KERNEL_TREE=${{ github.event.inputs.KERNEL_TREE_1 }}" >> $GITHUB_ENV
           case "${{ matrix.kernel }}" in
             1) echo "KERNEL_TREE_BRANCH=${{ github.event.inputs.KERNEL_TREE_BRANCH_1 }}" >> $GITHUB_ENV ;;
-            2) echo "KERNEL_TREE_BRANCH=${{ github.event.inputs.KERNEL_TREE_BRANCH_2 }}" >> $GITHUB_ENV ;;
-            3) echo "KERNEL_TREE_BRANCH=${{ github.event.inputs.KERNEL_TREE_BRANCH_3 }}" >> $GITHUB_ENV ;;
           esac
           
       - name: Checkout Kernel
