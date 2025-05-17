@@ -32,7 +32,7 @@ jobs:
   build:
     strategy:
       matrix:
-        kernel: [1, 2, 3]
+        kernel: [1]
         type: [original, modified]
     runs-on: ubuntu-latest
     env:
