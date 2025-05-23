@@ -13,11 +13,7 @@ on:
         required: true
       KERNEL_TREE_BRANCH_1:
         description: 'Kernel Tree Branch 1'
-        default: 'freesia'
-        required: true
-      KERNEL_TREE_BRANCH_2:
-        description: 'Kernel Tree Branch 2'
-        default: 'freesia'
+        default: 'next-main'
         required: true
       CODENAME:
         description: 'Phone Codename'
@@ -36,7 +32,7 @@ jobs:
   build:
     strategy:
       matrix:
-        kernel: [1, 2]
+        kernel: [1]
         type: [original, modified]
     runs-on: ubuntu-latest
     env:
@@ -58,7 +54,6 @@ jobs:
           echo "KERNEL_TREE=${{ github.event.inputs.KERNEL_TREE_1 }}" >> $GITHUB_ENV
           case "${{ matrix.kernel }}" in
             1) echo "KERNEL_TREE_BRANCH=${{ github.event.inputs.KERNEL_TREE_BRANCH_1 }}" >> $GITHUB_ENV ;;
-            2) echo "KERNEL_TREE_BRANCH=${{ github.event.inputs.KERNEL_TREE_BRANCH_2 }}" >> $GITHUB_ENV ;;
           esac
           
       - name: Checkout Kernel
@@ -130,7 +125,7 @@ jobs:
     needs: build
     strategy:
       matrix:
-        kernel: [1, 2]
+        kernel: [1]
     runs-on: ubuntu-latest
 
     steps:
